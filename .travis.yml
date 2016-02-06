@@ -1,0 +1,20 @@
+before_script:
+  - mkdir ConTeXt
+  - cd ConTeXt
+  - rsync -av rsync://contextgarden.net/minimals/setup/first-setup.sh .
+  - sh ./first-setup.sh --modules=all --engine=luatex
+  - source tex/setuptex
+  - cd ..
+
+script:
+  - context resume.tex
+
+deploy:
+  provider: releases
+  api_key:
+    secure: bTnOlELBeXhHriZP3Y0eCOe+gPuFB7exaorMxk65zqIKVZzxCT7PepW3prUIWq7Gl3xVcNoDAqKZcO/CAlo7gj3cRaC/PBhctWkgGOsoZe9rvW1+pK5puDBxtKk0c0x+zgk5QVskWiE2Hc15stXBdBjNHXTnOEIG81TVcVMY0tdol+slQv0lnSyeZmUh0de1aExo2c2o69zKJ2uBdxPzuLegFjzYjijMSpoRblS6TTJjRu5Ujg6/NmdlF2wVUMZLXvsTG74qWTjagH/hAXF0Zm+XcC545CeURenMAAfZArDDj+lhiKU3IoUR3DyLXwm5I+INX0YRiPUHPVFma57t6ZE+S3NmFR7S4tnIvCnT7XLLuuh3A4euGOiJDK7HI2KWMEwOlYHYkCxSwVusjc9dDGTa4IV24gIACnbC1KEBKzOLWqt1B1aHQ3nTMsZi6XsGBG20MNno/f2ZtXPN9iGfrcCBX5i88QLCZqJk40QurHzr5BQGdM1bo1zcNP4dL5i55vUc4SCodLcjGYgVFT8u/ZFlxqVuSqDqSL40Axwis58Df+kUikmnWUAMzraYJYiHkncKygxALNT2wDZHyo/DTzSNrxylyGgXSqK7tLrpBA7xP+dJnxlXU+JGivnQCVLd/EzF5qtgcS5JCrW3iYdoIONdm3XS3KemHSN5tbI9UAY=
+  file: resume.pdf
+  skip_cleanup: true
+  on:
+    repo: ether42/resume
+    tags: true
