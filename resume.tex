@@ -1,0 +1,268 @@
+% --- setup --------------------------------------------------------------------
+
+% --- document setup ---------
+\setuppapersize[A4][A4] % this is the default and may be omitted
+
+\setuplayout[
+  % backspace=20mm,
+  % width=160mm,
+  % topspace=20mm,
+  header=0mm,
+  footer=0mm,
+  % height=250mm,
+  backspace=30mm,
+]
+
+\setupbodyfont[10pt] % font
+
+\noheaderandfooterlines % no header, no footer
+
+
+% --- formatting setup -------
+
+\definehead[Name][title] % name used as title
+\setuphead[Name][
+  after=\nowhitespace,
+]
+
+\defineparagraphs[JobTitle][ % a job title
+  before=\blank,
+  after=\nowhitespace,
+]
+\setupparagraphs[JobTitle][1][
+  align=flushleft,
+  style=bold,
+  width=\hsize,
+  distance=0cm,
+]
+
+\defineparagraphs[JobInfos][ % a job location & date
+  n=2, % two columns
+  before=\nowhitespace,
+  after=\blank,
+]
+\setupparagraphs[JobInfos][1][
+  align=flushleft,
+  style=italic,
+  distance=0cm,
+]
+\setupparagraphs[JobInfos][2][
+  align=flushright,
+  style=italic,
+  distance=0cm,
+]
+
+% \definesymbol[2][-]
+
+\unexpanded\def\Job#1#2#3#4#5{ % macro for job formatting
+  \startJobTitle
+  \textrule[top]{#1} % job name
+  \stopJobTitle
+  \startJobInfos
+  #2 % job location
+  \JobInfos
+  #3 % job date
+  \stopJobInfos
+  #4 % job description
+  \startitemize[2,packed,joinedup]
+  #5 % job activities
+  \stopitemize
+}
+
+\unexpanded\def\JobActivity#1#2{ % macro for job activity formatting
+  \head #1 % following blank line is needed
+
+  \startitemize[2,packed,joinedup]
+  #2 % subpoints
+  \stopitemize
+}
+
+\defineparagraphs[SkillTitle][ % a skill title
+  before=\blank,
+  after=\blank,
+]
+\setupparagraphs[SkillTitle][1][
+  align=flushleft,
+  style=bold,
+  width=\hsize,
+  distance=0cm,
+]
+
+\unexpanded\def\Skill#1#2{ % macro for skill formatting
+  \startSkillTitle
+  \textrule[top]{#1} % skill name
+  \stopSkillTitle
+  \startitemize[2,packed,joinedup]
+  #2 % skill points
+  \stopitemize
+}
+
+
+
+% --- document -----------------------------------------------------------------
+
+\starttext % start of document
+
+
+% --- contact ----------------
+\Name{Kevin BOULAIN}
+\startitemize[5*broad,packed,joinedup]
+  \sym {location:} 61 rue de Montreuil, Paris 75011, France
+  \sym {mobile:} +33 6 95 49 89 35
+  \sym {e-mail:} kevinboulain@gmail.com
+\stopitemize
+\blank[6*big] % some blank space
+
+
+% --- jobs -------------------
+\inleft{Experiences}
+
+\Job
+  {Research and development engineer}
+  {SecurActive, Paris, France}
+  {December 2014 – Present}
+  {}
+  {
+    \JobActivity
+      {Planning, migration and maintenance of a network monitoring appliance's operating system}
+      {
+        \item reworking of the images generation processes for virtual and hardware machines
+        \item reworking of the Salt-based configuration
+      }
+    \JobActivity
+      {Contributions to a real-time sniffer written in C}
+      {
+        \item protocol parsers such as DB2 DRDA, VXLAN, MSRPC
+      }
+    \JobActivity
+      {Contributions to the web interface written in Python}
+      {
+        \item optimizations to the SQL output of a small EDSL created for a replacement database
+      }
+    \JobActivity{Level 2 & 3 support} % FIXME: blank line required
+
+    \JobActivity{Small infrastructure maintenance (Ansible and LXC)}
+  }
+
+\Job
+  {DevOps}
+  {NBS System, Paris, France}
+  {June 2014 - September 2014}
+  {}
+  {
+    \JobActivity
+      {Development and maintenance of tools for the IT infrastructure administration (mainly realized in Python & Salt)}
+      {
+        \item reworking of the deployment of Xen virtual machines
+      }
+    \JobActivity{Realization of proofs of concepts for new services}
+  }
+
+\Job
+  {Technical and educational responsible}
+  {School 42, Paris, France}
+  {May 2013 - June 2014}
+  {}
+  {
+    \JobActivity
+      {Planning, deployment and administration of the IT infrastructure}
+      {
+        \item VMware virtualization
+        \item a thousand of MAC OS X client machines
+        \item 3 thousand new student accounts each year
+      }
+    \JobActivity
+      {Development of a Python-based centralized administrative tool}
+      {
+        \item IT infrastructure management
+        \item students follow-up
+      }
+    \JobActivity{Level 2 & 3 support} % FIXME: blank line required
+
+    \JobActivity{Educational role for students learning the C language through projects and e-learning}
+  }
+
+\Job
+  {System and network administrator}
+  {IONIS Group, Kremlin-Bicêtre, France}
+  {July 2011 – May 2013}
+  {}
+  {
+    \JobActivity
+      {Management of a small team handling the IT infrastructure}
+      {
+        \item 2 thousand client machines (Windows and Linux)
+        \item 15000 accounts of students and administrative personnel
+      }
+    % FIXME: blank lines required
+    \JobActivity{Deployment of a VMware infrastructure to migrate parts of the legacy infrastructure}
+
+    \JobActivity{Level 1, 2 & 3 support through a ticketing system, phone and physical interventions}
+
+    \JobActivity{Planning and participation in strong visibility events}
+
+    \JobActivity{Educational role for first and second year students learning the C language}
+  }
+
+
+% --- formations -------------
+\blank[3*big] % some blank space
+\page[yes] % for now, not enough experience to have a nice presentation
+\inleft{Formations}
+
+\Job
+  {Wireshark}
+  {Paris, France}
+  {2015}
+  {Case studies}
+
+\Job
+  {Preparation for the Master at EPITECH}
+  {Kremlin-Bicêtre, France}
+  {October 2010 – June 2014}
+  {Studies leading to a Master’s degree at EPITECH (European Institute of Technology), stopped at the end of the 4\high{th} year}
+
+\Job
+  {Baccalauréat}
+  {Dreux, France}
+  {2010}
+  {Baccalauréat in the engineer sciences, Edouard Branly high shcool}
+
+
+% --- skills -----------------
+\blank[3*big] % some blank space
+\inleft{Skills}
+
+\Skill{Services}{
+  \item DHCP, DNS, Radius, Kerberos, OpenLDAP, Active Directory
+  \item Salt, Ansible, Puppet, Fabric, Clonezilla
+  \item XEN, VMware ESXi & vCenter, Veeam, VirtualBox, LXC
+  \item ZFS, AFS, NFS
+  \item PostgreSQL & Barman, MonetDB, MySQL, Redis
+  \item Zabbix, Monit, Supervisor, Collectd, Cacti, New Relic
+  \item nginx, HAproxy, Keepalived, gunicorn
+  \item Postfix, Exchange 2008 & 2013
+}
+
+\Skill{Development}{
+  \item C, Python, Shell, SQL
+  \item Git
+  \item Agile methodology
+}
+
+\Skill{Operating systems, hardware and appliances}{
+  \item Linux (Debian-based predilection)
+  \item BSD (OpenBSD predilection)
+  \item Solaris (OpenIndiana, Nexenta)
+  \item VMware (ESXi & vCenter)
+  \item Apple (Mac OS X)
+  \item Microsoft (Windows Server 2008 & 2012)
+  % \item HP (Procurve)
+  \item Cisco
+  % \item Dell
+  % \item Juniper
+  \item AeroHive
+}
+
+
+\stoptext % end of document
