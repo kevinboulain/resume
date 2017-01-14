@@ -5,11 +5,11 @@ To build:
 context_directory=ConTeXt
 
 mkdir "$context_directory"
-(cd $_
+(cd "$_"
   rsync -av rsync://contextgarden.net/minimals/setup/first-setup.sh .
-  sh ./first-setup.sh --modules=all --engine=luatex
+  ./first-setup.sh --modules=all --engine=luatex
 )
 
 . "$context_directory"/tex/setuptex
-context resume.tex
+context products/resume.tex
 ```

@@ -1,0 +1,22 @@
+\startenvironment[document]
+
+  \setuppapersize[A4][A4] % default
+
+  \setupbodyfont[10pt]
+
+  \setuplayout[ % http://wiki.contextgarden.net/Layout
+    header=0mm,
+    footer=0mm,
+    backspace=30mm,
+  ]
+
+  \setupinteraction[ % http://wiki.contextgarden.net/Interaction
+    state=start,
+    style=, % no default bold
+    color=black, % destination is not on the same page
+    contrastcolor=black, % destination is on the same page
+    title={\name's resume},
+    author={\name},
+  ]
+
+\stopenvironment

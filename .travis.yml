@@ -2,12 +2,12 @@ before_script:
   - mkdir ConTeXt
   - cd ConTeXt
   - rsync -av rsync://contextgarden.net/minimals/setup/first-setup.sh .
-  - sh ./first-setup.sh --modules=all --engine=luatex
+  - ./first-setup.sh --modules=all --engine=luatex > /dev/null
   - source tex/setuptex
   - cd ..
 
 script:
-  - context resume.tex
+  - context products/resume.tex
 
 deploy:
   provider: releases
