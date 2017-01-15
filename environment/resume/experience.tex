@@ -1,5 +1,10 @@
 \startenvironment[experience]
 
+  \setuptextrules[
+    color=bluegrey2,
+    rulecolor=bluegrey3,
+  ]
+
   \defineparagraphs[exptitle][
     n=1,
     before=\blank,
@@ -47,6 +52,6 @@
     joinedup, % no space before and after
   ]
 
-  \define[1]\experiencecategory{\inleft{#1}}
+  \define[1]\experiencecategory{\inleft{\color[bluegrey1]{#1}}}
 
 \stopenvironment
