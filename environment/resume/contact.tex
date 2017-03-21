@@ -1,9 +1,13 @@
 \startenvironment[contact]
 
-  \edef\name{Kevin BOULAIN}
-  \edef\location{61 rue de Montreuil, Paris 75011, France}
-  \edef\mobile{+33 6 95 49 89 35}
-  \edef\email{kevinboulain@gmail.com}
+  \doifmodeelse{anonymous}{
+    \edef\name{Kevin B.}
+  }{
+    \edef\name{Kevin BOULAIN}
+    \edef\location{61 rue de Montreuil, Paris 75011, France}
+    \edef\mobile{+33 6 95 49 89 35}
+    \edef\email{kevinboulain@gmail.com}
+  }
 
   \definehead[contact][title]
   \setuphead[contact][

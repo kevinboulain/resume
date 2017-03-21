@@ -1,10 +1,12 @@
 \startcomponent[contact]
 
   \contact{\name}
-  \startcontactinfos
-    \sym {location:} \location
-    \sym {mobile:} \mobile
-    \sym {email:} \goto{\email}[url(mailto:\email)] % goto is necessary here
-  \stopcontactinfos
+  \startnotmode[anonymous]
+    \startcontactinfos
+      \sym {location:} \location
+      \sym {mobile:} \mobile
+      \sym {email:} \goto{\email}[url(mailto:\email)] % goto is necessary here
+    \stopcontactinfos
+  \stopnotmode
 
 \stopcomponent

@@ -9,13 +9,16 @@ before_script:
   - cd ..
 
 script:
+  - context --mode=anonymous products/resume.tex
+  - mv resume.pdf resume-anonymous.pdf
   - context products/resume.tex
 
 deploy:
   provider: releases
   api_key:
     secure: jIqhT+8JooqPKqK4He/unIRwwvNmyt9vOVM384D7mAlsefYYpNDkVBJZkio/Otc8Ebg7TtYB0MVB2riN5afqVTd6UgrcM08iV0Y1ggRoq8PCSwtp4KYNoFHwcIy8UuOptuv2xXbWYxmZCLfBWf4rwN6bZmTSS4Ug58+K3EusGq3HrUwjAyq6d5eiEmpe0N+e+K5XUYUF0FMifMIVgjrCmq3ACO0Dhnnhp49sMQbLlgqnsVVOhlzRDWK5ckwHGsyU/MC1RvKpx2Zh2RD5/EoUgNRuMZRTyIzBf3e7tCDATWkzzGyjPLBk61GTyK/tFTluKA9W6FbaQcyBkGmD8y60T2nI6A4ROIXku7DDdmchUOWpbwA85f220fK46MPdSWRJp67eqXNuj0hgP9ruGNuaVVfgSoQjYHZC20LiNvBffLffpmoF+AH+LaGNQyhdOrmSy0EZIqzL9rNxPG7LWXJu6ucoy5fHR8tQBWukUr97DYnuVsMH9qTvfP+2gK4Bn7zYJUlXVDxJz8ML0Poh2VOv2BmZvUzYKcqWv9S758i3Gw0HhOqEQ+jc2kz0W0iYYLehipUPbS3wUwA7UCJyGzcYEJ8z9VkMN5TKofGC/X0Bm59me9hxnUB1sRcGi3DTOD8gNNEMwO9dnjhed6iZ9z9UxR2757kPt8ES0mPHGJsDeK0=
-  file: resume.pdf
+  file_glob: true
+  file: resume*.pdf
   skip_cleanup: true
   on:
     repo: ether42/resume
