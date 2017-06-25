@@ -1,3 +1,5 @@
+language: generic
+
 before_script:
   - mkdir ConTeXt
   - cd ConTeXt
