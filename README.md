@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ether42/resume.svg?branch=master)](https://travis-ci.org/ether42/resume)
+[![Build Status](https://travis-ci.com/ether42/resume.svg?branch=master)](https://travis-ci.com/ether42/resume)
 
 To build:
 ```shell
