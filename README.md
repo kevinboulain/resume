@@ -6,7 +6,8 @@ context_directory=ConTeXt
 
 mkdir "$context_directory"
 (cd "$_"
-  rsync -av rsync://contextgarden.net/minimals/setup/first-setup.sh .
+  # http://minimals.contextgarden.net/setup/
+  rsync -ptv rsync://contextgarden.net/standalone/setup/first-setup.sh .
   ./first-setup.sh --modules=all --engine=luatex
 )
 
