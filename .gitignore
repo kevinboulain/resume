@@ -1,4 +1,5 @@
-ConTeXt
-resume.log
-resume.tuc
-resume.pdf
+/ConTeXt/
+/*.log
+/*.pdf
+/*.pgf
+/*.tuc

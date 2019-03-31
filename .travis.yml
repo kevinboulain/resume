@@ -9,9 +9,9 @@ before_script:
   - cd ..
 
 script:
-  - context --mode=anonymous products/resume.tex
+  - context --mode=anonymous resume.tex
   - mv resume.pdf resume-anonymous.pdf
-  - context products/resume.tex
+  - context resume.tex
 
 deploy:
   provider: releases

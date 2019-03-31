@@ -12,5 +12,5 @@ mkdir "$context_directory"
 )
 
 . "$context_directory"/tex/setuptex
-context products/resume.tex
+context resume.tex
 ```
