@@ -24,8 +24,8 @@
 \doifmodeelse{anonymous}{
   \edef\name{Kevin B.}
 }{
-  \edef\name{Kevin BOULAIN}
-  \edef\location{61 rue de Montreuil, Paris 75011, France}
+  \edef\name{Kevin Boulain}
+  \edef\location{Zürich, Switzerland}
   \edef\mobile{+33 6 95 49 89 35}
   \edef\email{kevinboulain@gmail.com}
 }
@@ -62,13 +62,7 @@
 \doifmodeelse{anonymous}{
   \definebuffer[contactinfos] % define the item group as a buffer so it gobbles everything
 }{
-  \defineitemgroup[contactinfos]
-  \setupitemgroup[contactinfos][each][
-    6*broad, % space after symbol
-    joinedup, % no space before and after
-    nowhite, % not a separate paragraph
-    packed, % no space between items
-  ]
+  \definestartstop[contactinfos] % otherwise just use a dummy environment
 }
 
 \setupmarginframed[left][
@@ -96,43 +90,107 @@
 
   \contact{\name} %-------------------------------------------------------------
   \startcontactinfos
-    \sym {location:} \location
-    \sym {mobile:} \mobile
-    \sym {email:} \goto{\email}[url(mailto:\email)] % goto is necessary here
+    \startlines
+      \location
+      \mobile
+      \goto{\email}[url(mailto:\email)] % goto is necessary here
+    \stoplines
   \stopcontactinfos
-  \blank[6*big]
+  \blank[3*big]
 
-  \experiencecategory{Experiences} % -------------------------------------------
+  \experiencecategory{Experience} % --------------------------------------------
+
+  \useURL[google] % ------------------------------------------------------------
+    [https://www.google.com/]
+    []
+    [Google]
+
+  \useURL[cloudarmor]
+    [https://cloud.google.com/armor]
+    []
+    [Cloud Armor]
+
+  \experiencetitle{Site Reliability Engineer}
+  \experiencelocality
+    {\from[google], Zürich, Switzerland}
+    {April 2019 – present}
+
+  DDoS protection infrastructure and \from[cloudarmor].
+
+  \startexperienceactivity
+    \item Design, implementation, and migration of multi-million queries per
+          second systems to a new infrastructure platform.
+    \item Overhaul of the legacy rollout system, monitoring, alerting,
+          introduction of automated qualification, capacity planning, probers,
+          CI, ...
+    \item Code mostly written in Python.
+    \item On-call.
+  \stopexperienceactivity
 
   \useURL[performancevision] % -------------------------------------------------
     [https://www.performancevision.com/]
     []
     [Accedian Performance Vision]
 
-  \experiencetitle{Research and development engineer}
+  \useURL[drda]
+    [https://pubs.opengroup.org/onlinepubs/9690989699/toc.pdf]
+    []
+    [DRDA]
+
+  \useURL[tls]
+    [https://www.rfc-editor.org/rfc/rfc5246]
+    []
+    [TLS]
+
+  \useURL[msrpc]
+    [https://winprotocoldoc.blob.core.windows.net/productionwindowsarchives/MS-RPCE/\%5BMS-RPCE\%5D.pdf]
+    []
+    [MSRPC]
+
+  \useURL[vxlan]
+    [https://www.rfc-editor.org/rfc/rfc7348]
+    []
+    [VXLAN]
+
+  \useURL[ansible]
+    [https://www.ansible.com/]
+    []
+    [Ansible]
+
+  \useURL[lxc]
+    [https://linuxcontainers.org/]
+    []
+    [LXC]
+
+  \useURL[qemu]
+    [https://www.qemu.org/]
+    []
+    [QEMU]
+
+  \useURL[kvm]
+    [https://www.linux-kvm.org/page/Main_Page]
+    []
+    [KVM]
+
+  \experiencetitle{Software Engineer}
   \experiencelocality
     {\from[performancevision], Paris, France}
     {December 2014 – March 2019}
 
-  Network performance monitoring appliance editor
+  Network performance monitoring appliance.
 
   \startexperienceactivity
-    \item Contributions to a real-time sniffer written in C
-    \startexperienceactivity
-      \item protocol parsers such as DB2 DRDA, TLS, MSRPC, VXLAN, ...
-      \item data analysis
-    \stopexperienceactivity
-
-    \item Planning, migration and maintenance of the appliance's operating
-          system
-    \startexperienceactivity
-      \item reworking of the build processes for virtual and hardware machines
-    \stopexperienceactivity
-
-    \item Contributions to the back-end written in Python
-
-    \item Reworking of the Buildbot-based test infrastructure
-    \item Level 2 & 3 support
+    \item Extensions to a real-time sniffer written in C, including protocol
+          parsers such as \from[drda], \from[tls], \from[msrpc], \from[vxlan],
+          ..., and data analysis.
+    \item Design, implementation, migration, and maintenance of the appliance's
+          operating system. Complete overhaul of the build and installation
+          process for virtual and physical machines.
+    \item Contributions to the Python backend.
+    \item Complete overhaul of the CI.
+    \item Overhaul and administration of the infrastructure (\from[ansible],
+          \from[lxc], \from[qemu]/\from[kvm]).
+    \item Support.
   \stopexperienceactivity
 
   \useURL[nbs] % ---------------------------------------------------------------
@@ -140,21 +198,28 @@
     []
     [NBS System]
 
+  \useURL[xen]
+    [https://xenproject.org/]
+    []
+    [Xen]
+
+  \useURL[salt]
+    [https://saltproject.io/]
+    []
+    [Salt]
+
   \experiencetitle{DevOps}
   \experiencelocality
     {\from[nbs], Paris, France}
     {June 2014 - September 2014}
 
-  E-commerce managed hosting
+  E-commerce managed hosting.
 
   \startexperienceactivity
-    \item Development and maintenance of tools for the IT infrastructure
-          administration (mainly realized in Python & Salt)
-    \startexperienceactivity
-      \item reworking of the deployment of Xen virtual machines
-    \stopexperienceactivity
-
-    \item Realization of proofs of concepts for new services
+    \item Tooling development for administrating the infrastructure (written in
+          Python & \from[salt]), including reworking the deployment of
+          \from[xen] virtual machines.
+    \item Realization of proofs of concepts for new services.
   \stopexperienceactivity
 
   \useURL[42] % ----------------------------------------------------------------
@@ -162,105 +227,96 @@
     []
     [School 42]
 
-  \experiencetitle{Technical and educational responsible}
+  \useURL[vmware]
+    [https://www.vmware.com/]
+    []
+    [VMware]
+
+  \useURL[openldap]
+    [https://www.openldap.org/]
+    []
+    [OpenLDAP]
+
+  \useURL[freeradius]
+    [https://freeradius.org/]
+    []
+    [FreeRADIUS]
+
+  \useURL[kerberos]
+    [https://web.mit.edu/kerberos/]
+    []
+    [Kerberos]
+
+  \useURL[ZFS]
+    [https://en.wikipedia.org/wiki/ZFS]
+    []
+    [ZFS]
+
+  \experiencetitle{Technical and Educational Responsible}
   \experiencelocality
     {\from[42], Paris, France}
     {May 2013 - June 2014}
 
-  IT school
+  IT school.
 
   \startexperienceactivity
-    \item Planning, deployment and administration of the IT infrastructure
-    \startexperienceactivity
-      \item VMware virtualization
-      \item a thousand of Mac OS X client machines
-      \item 3 thousand new student accounts each year
-    \stopexperienceactivity
-
-    \item Development of a Python-based centralized administrative tool
-    \startexperienceactivity
-      \item IT infrastructure management
-      \item students follow-up
-    \stopexperienceactivity
-
-    \item Level 2 & 3 support
+    \item Design, deployment, and administration of the infrastructure
+          (\from[vmware] servers, a thousand of macOS clients, thousands of new
+          student accounts each year, custom solutions built around
+          \from[openldap], \from[freeradius], \from[kerberos], \from[ZFS], ...).
+    \item Development of a centralized administrative tool written in Python.
+    \item Support.
     \item Educational role for students learning the C language through projects
-          and e-learning
+          and e-learning.
   \stopexperienceactivity
 
   \useURL[ionis] % -------------------------------------------------------------
     [http://www.ionis-group.com/]
     []
-    [IONIS Group]
+    [IONIS Education Group]
 
-  \experiencetitle{System and network administrator}
+  \experiencetitle{System and Network Administrator}
   \experiencelocality
     {\from[ionis], Kremlin-Bicêtre, France}
     {July 2011 – May 2013}
 
-  Technology schools
+  Technology schools.
 
   \startexperienceactivity
-    \item Management of a small team handling the IT infrastructure
-    \startexperienceactivity
-      \item 2 thousand client machines (Windows and Linux)
-      \item 15000 accounts of students and administrative personnel
-    \stopexperienceactivity
-
-    \item Deployment of a VMware infrastructure to migrate parts of the legacy
-          infrastructure
-    \item Level 1, 2 & 3 support through a ticketing system,
-          phone and physical interventions
-    \item Planning and participation in strong visibility events
-    \item Educational role for first and second year students learning the
-          C language
+    \item Administration of the infrastructure (thousands of client machines,
+          fifteen thousand accounts for students and staff).
+    \item Migration of the legacy infrastructure to \from[vmware].
+    \item Support.
+    \item Educational role for students learning the C language through projects
+          and e-learning.
   \stopexperienceactivity
 
   \page[yes] % for now, not enough experience to have the most important stuff only on first page
-  \experiencecategory{Formations} % --------------------------------------------
+  \experiencecategory{Education} % ---------------------------------------------
 
   \useURL[epitech] % -----------------------------------------------------------
     [http://www.epitech.eu/]
     []
     [EPITECH]
 
-  \experiencetitle{Preparation for the Master}
+  \experiencetitle{Preparation for the Master's Degree}
   \experiencelocality
     {\from[epitech], Kremlin-Bicêtre, France}
     {October 2010 – May 2014}
 
-  Studies leading to a Master’s degree at the European Institute of Technology,
-  stopped at the end of the 4\high{th} year
+  Studies leading to a Master’s degree at the European Institute of Technology
+  stopped at the end of the 4\high{th} year.
 
   \useURL[branly] % ------------------------------------------------------------
-    [http://lyc-edouardbranly-dreux.tice.ac-orleans-tours.fr/eva/]
+    [https://www.lyceebranlydreux.com/]
     []
-    [Edouard Branly high shcool]
+    [Édouard Branly high shcool]
 
   \experiencetitle{Baccalauréat}
   \experiencelocality
     {\from[branly], Dreux, France}
     {2010}
 
-  Baccalauréat in the engineer sciences
-
-  \blank[3*big] % some blank space to visually separate skills
-  \experiencecategory{Skills} % ------------------------------------------------
-
-  \experiencetitle{Development}
-  \startexperienceactivity
-    \item Python (2 & 3), C, Shell
-    \item Git
-    \item Agile methodology
-  \stopexperienceactivity
-
-  \experiencetitle{System administration}
-  \startexperienceactivity
-    \item Automation (Ansible, Salt, ...)
-    \item Infrastructure (DHCP, DNS, LDAP, RADIUS, ...)
-    \item Linux (mainly Debian-based)
-    \item Network analysis
-    \item Virtualisation (LXC, QEMU/KVM, ...)
-  \stopexperienceactivity
+  Baccalauréat in the engineering sciences.
 
 \stoptext
