@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.com/ether42/resume.svg?branch=master)](https://travis-ci.com/ether42/resume)
-
 To build:
 ```shell
 context_directory=ConTeXt
@@ -13,4 +11,5 @@ mkdir "$context_directory"
 
 . "$context_directory"/tex/setuptex
 context resume.tex
+context resume.tex --mode=anonymous --result=resume-anonymous
 ```
