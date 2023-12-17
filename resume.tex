@@ -1,15 +1,15 @@
 % -- modes ---------------------------------------------------------------------
-\definemode[anonymous][keep] % some recruiters like an anonymized resume
+\definemode[anonymous][keep] % Some recruiters like an anonymized resume.
 
 \enabletrackers[ % \showtrackers
-  % context.trace, % what is passed to TeX
-  % resolvers.readfile, % file errors, mainly system-related?
+  % context.trace, % What is passed to TeX.
+  % resolvers.readfile, % File errors, mainly system-related?
   % typesetters.suspects, % https://wiki.contextgarden.net/Trackers/typesetters.suspects
   % visualizers.justification, % https://wiki.contextgarden.net/Trackers/visualizers.justification
 ]
 \enabledirectives[ % \showdirectives
   logs.errors,
-  % link debugging https://www.mail-archive.com/ntg-context@ntg.nl/msg73866.html
+  % Link debugging https://www.mail-archive.com/ntg-context@ntg.nl/msg73866.html
   % destinations.log,
   % references.border,
 ]
@@ -25,7 +25,7 @@
   \edef\name{Kevin B.}
 }{
   \edef\name{Kevin Boulain}
-  \edef\location{Zürich, Switzerland}
+  \edef\location{France}
   \edef\mobile{+33 6 95 49 89 35}
   \edef\email{kevin% Some...
               @% ...obfuscation.
@@ -44,10 +44,10 @@
 \definecolor[hyperlink][material_blue_gray_700]
 \setupinteraction[ % http://wiki.contextgarden.net/Interaction
   state=start,
-  style=, % no default bold
-  color=hyperlink, % destination is not on the same page
-  contrastcolor=hyperlink, % destination is on the same page
-  focus=standard, % don't mess up the zoom
+  style=, % Don't default to bold.
+  color=hyperlink, % Destination is not on the same page.
+  contrastcolor=hyperlink, % Destination is on the same page.
+  focus=standard, % Don't change the zoom.
   title={\name's resume},
   author={\name},
 ]
@@ -57,18 +57,18 @@
 
 \definehead[contact][title]
 \setuphead[contact][
-  after=\nowhitespace, % no space after title
+  after=\nowhitespace, % No space after title.
   color=material_blue_gray_900,
 ]
 
 \doifmodeelse{anonymous}{
-  \definebuffer[contactinfos] % define the item group as a buffer so it gobbles everything
+  \definebuffer[contactinfos] % Define the item group as a buffer so it gobbles everything...
 }{
-  \definestartstop[contactinfos] % otherwise just use a dummy environment
+  \definestartstop[contactinfos] % ...otherwise just use a dummy environment.
 }
 
 \setupmarginframed[left][
-  align={flushright,broad}, % actually not necessary https://www.mail-archive.com/ntg-context@ntg.nl/msg88886.html
+  align={flushright,broad}, % Actually not necessary https://www.mail-archive.com/ntg-context@ntg.nl/msg88886.html
 ]
 \def\experiencecategory#1{\inleft{\color[material_blue_gray_900]{#1}}}
 
@@ -82,25 +82,40 @@
 
 \defineitemgroup[experienceactivity]
 \setupitemgroup[experienceactivity][each][
-  2, % hyphen
-  joinedup, % no space before and after
-  packed, % no space between items
+  2, % Hyphen.
+  joinedup, % No space before and after.
+  packed, % No space between items.
 ]
 
 % -- content -------------------------------------------------------------------
 \starttext
 
-  \contact{\name} %-------------------------------------------------------------
+  \contact{\name} % ------------------------------------------------------------
   \startcontactinfos
     \startlines
       \location
       \mobile
-      \goto{\email}[url(mailto:\email)] % goto is necessary here
+      \goto{\email}[url(mailto:\email)] % Goto is necessary here.
     \stoplines
   \stopcontactinfos
   \blank[3*big]
 
   \experiencecategory{Experience} % --------------------------------------------
+
+  \useURL[kadiska] % -----------------------------------------------------------
+    [https://kadiska.com/]
+    []
+    [Netskope / Kadiska]
+
+  \experiencetitle{Staff Engineer}
+  \experiencelocality
+    {\from[kadiska], Remote, France}
+    {November 2023 – Present} % 2023-11-13
+
+  Digital experience monitoring.
+
+  \startexperienceactivity
+  \stopexperienceactivity
 
   \useURL[google] % ------------------------------------------------------------
     [https://www.google.com/]
@@ -132,7 +147,7 @@
   \useURL[performancevision] % -------------------------------------------------
     [https://www.performancevision.com/]
     []
-    [Accedian Performance Vision]
+    [Accedian / Performance Vision]
 
   \useURL[drda]
     [https://pubs.opengroup.org/onlinepubs/9690989699/toc.pdf]
@@ -293,7 +308,7 @@
           and e-learning.
   \stopexperienceactivity
 
-  \page[yes] % for now, not enough experience to have the most important stuff only on first page
+  \page[no] % Depending on previous experiences, a page break might look better.
   \experiencecategory{Education} % ---------------------------------------------
 
   \useURL[epitech] % -----------------------------------------------------------
